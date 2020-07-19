@@ -20,9 +20,12 @@ class CalculatorButtons:
         self.buttons[ButtonText.eight]=Button(root, text=ButtonText.eight.value, padx=40, pady=20, command=partial(calculator.insert_text, ButtonText.eight.value))
         self.buttons[ButtonText.nine]=Button(root, text=ButtonText.nine.value, padx=40, pady=20, command=partial(calculator.insert_text, ButtonText.nine.value))
         self.buttons[ButtonText.zero]=Button(root, text=ButtonText.zero.value, padx=40, pady=20, command=partial(calculator.insert_text, ButtonText.zero.value))
-        self.buttons[ButtonText.plus] = Button(root, text=ButtonText.plus.value,  padx=39, pady=20, command=partial(calculator.insert_text, "+"))
-        self.buttons[ButtonText.clear] = Button(root, text=ButtonText.clear.value,  padx=79, pady=20, command=calculator.clear_text_field)
+        self.buttons[ButtonText.plus] = Button(root, text=ButtonText.plus.value,  padx=40, pady=20, command=partial(calculator.add, ))
+        self.buttons[ButtonText.clear] = Button(root, text=ButtonText.clear.value,  padx=91, pady=20, command=calculator.clear_text_field)
         self.buttons[ButtonText.equal] = Button(root, text=ButtonText.equal.value, padx=91, pady=20, command=calculator.calculate)
+        self.buttons[ButtonText.subtract] = Button(root, text=ButtonText.subtract.value, padx=40, pady=20, command=calculator.subtract)
+        self.buttons[ButtonText.multiply] = Button(root, text=ButtonText.multiply.value, padx=40, pady=20, command=calculator.multiply)
+        self.buttons[ButtonText.divide] = Button(root, text=ButtonText.divide.value, padx=40, pady=20, command=calculator.divide)
 
     def place_on_screen(self):
         self.buttons[ButtonText.one].grid(row=self.base_row+2, column=self.base_col)
@@ -39,4 +42,7 @@ class CalculatorButtons:
         self.buttons[ButtonText.plus].grid(row=self.base_row+4,  column=self.base_col)
         self.buttons[ButtonText.clear].grid(row=self.base_row+3, column=self.base_col+1, columnspan=2)
         self.buttons[ButtonText.equal].grid(row=self.base_row+4, column=self.base_col+1,columnspan=2)
+        self.buttons[ButtonText.subtract].grid(row=self.base_row+6, column=self.base_col)
+        self.buttons[ButtonText.multiply].grid(row=self.base_row+6, column=self.base_col+1)
+        self.buttons[ButtonText.divide].grid(row=self.base_row+6, column=self.base_col+2)
 

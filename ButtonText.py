@@ -16,5 +16,8 @@ class ButtonText(Enum):
     nine="9"
     zero="0"
     plus = "+"
+    subtract = "-"
+    multiply = "*"
+    divide = "/"
     equal = "="
     clear = "clear"

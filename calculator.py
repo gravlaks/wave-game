@@ -1,6 +1,14 @@
 from tkinter import *
 from CalculatorButtons import CalculatorButtons
 
+from enum import Enum, unique
+
+@unique
+class Action(Enum):
+    add = 0
+    subtract = 1
+    multiply = 2
+    divide = 3
 
 class Calculator:
     def __init__(self):
@@ -22,12 +30,40 @@ class Calculator:
         self.text_entry.delete(0, END)
 
     def calculate(self):
-        numbers = self.text_entry.get().split("+")
+        current_number = int(self.text_entry.get())
+        self.clear_text_field()
         result = 0
-        for elem in numbers:
-            result += int(elem)
-        self.text_entry.delete(0, END)
+        if self.action == Action.add:
+            result = current_number + self.previous_value
+        if self.action== Action.subtract:
+            result = current_number - self.previous_value
+        if self.action== Action.multiply:
+            result = current_number * self.previous_value
+        if self.action== Action.divide:
+            result = current_number / self.previous_value
+
+
         self.text_entry.insert(0, result)
+
+    def subtract(self):
+        self.previous_value = int(self.text_entry.get())
+        self.action = Action.subtract
+        self.clear_text_field()
+
+    def add(self):
+        self.previous_value = int(self.text_entry.get())
+        self.action = Action.add
+        self.clear_text_field()
+
+    def multiply(self):
+        self.previous_value = int(self.text_entry.get())
+        self.action = Action.multiply
+        self.clear_text_field()
+
+    def divide(self):
+        self.previous_value = int(self.text_entry.get())
+        self.action = Action.divide
+        self.clear_text_field()
 
     def run(self):
         self.root.mainloop()
